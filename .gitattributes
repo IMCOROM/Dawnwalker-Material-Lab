@@ -1,0 +1,2 @@
+# Preserve release-source byte hashes across Windows and Unix checkouts.
+src/*.py -text
