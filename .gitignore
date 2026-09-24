@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+build/
+dist/
+release/
+resources/
+Projects/
+AssetLibrary/
+Tools/
+recent_garments.json
+appearance_settings.json
+*.log
+smoke*.json
