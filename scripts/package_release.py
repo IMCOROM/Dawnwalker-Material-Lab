@@ -20,7 +20,7 @@ for f in sorted(base.rglob('*')):
 out = root / 'release'
 out.mkdir(exist_ok=True)
 full = (base / 'AssetLibrary/package_index.json').is_file() and (base / 'Tools/retoc.exe').is_file()
-name = 'Dawnwalker_Material_Lab_v0.19_' + ('Full' if full else 'AppOnly') + '_Rebuilt.zip'
+name = 'Dawnwalker_Material_Lab_v0.21_' + ('Full' if full else 'AppOnly') + '_Rebuilt.zip'
 archive = out / name
 with zipfile.ZipFile(archive, 'w', zipfile.ZIP_DEFLATED, compresslevel=6) as z:
     for f in files:

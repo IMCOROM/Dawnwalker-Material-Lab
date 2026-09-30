@@ -1,5 +1,6 @@
 """Read weapon exports and verify their existing cooked color records."""
 import struct
+import math
 from pathlib import Path
 
 SWORD='/Game/_Dawnwalker/Shaders/Characters/Clothes/M_SwordClothSimplified'
@@ -49,21 +50,35 @@ def compact_material(path,data,index,library):
         entry=next((e for e in index.get(pkg,[]) if e['filename'].endswith('.uasset')),None)
         if entry:raw=library/'chunks'/entry['id']
     if not raw.exists():return None
-    names,imports=zen_names(raw.read_bytes())
-    parents=[p for p in imports if p in (SWORD,SIMPLE)]
+    binary=raw.read_bytes()
+    names,imports=zen_names(binary)
+    parents=[p for p in imports if p in (SWORD,SIMPLE) or p.endswith('/M_FabricOptimized_NEW')]
     if len(parents)!=1:return None
     parent=parents[0];textures=data.get('Textures',{})
     props={'Parent':{'ObjectPath':parent+'.0'},'TextureParameterValues':[], 'VectorParameterValues':[], 'ScalarParameterValues':[]}
+    resolved=data.get('Parameters',data)
     for name,value in textures.items():
+        if isinstance(value,dict):value=value.get('ObjectPath')
         if isinstance(value,str) and value.startswith(('/Game/','/Engine/')):
             props['TextureParameterValues'].append({'ParameterInfo':{'Name':name},'ParameterValue':{'ObjectPath':value}})
-    for name,value in data.get('Parameters',{}).get('Colors',{}).items():
-        if name not in VECTOR_GUIDS or name not in names:continue
-        guid=VECTOR_GUIDS[name]
+    for name,value in resolved.get('Colors',{}).items():
+        if names.count(name)!=1:continue
+        if name in VECTOR_GUIDS:
+            guid=VECTOR_GUIDS[name]
+        elif name in ('Pattern 1 Color','Pattern 2 Color','Pattern 3 Color'):
+            marker=b'\x00\x07\x00\x07'+struct.pack('<IIBi',names.index(name),0,2,-1)
+            if binary.count(marker)!=1:continue
+            offset=binary.index(marker)+len(marker)
+            if offset+32>len(binary):continue
+            rgba=struct.unpack_from('<4f',binary,offset)
+            if not isinstance(value,dict) or any(not math.isfinite(v) or not math.isclose(v,value.get(k,float('nan')),rel_tol=1e-5,abs_tol=1e-6) for k,v in zip('RGBA',rgba)):continue
+            guid=''.join(f'{v:08X}' for v in struct.unpack_from('<4I',binary,offset+16))
+        else:continue
         props['VectorParameterValues'].append({'ParameterInfo':{'Name':name},'ParameterValue':value,'ExpressionGUID':'-'.join(guid[i:i+8] for i in range(0,32,8))})
+    props['ScalarParameterValues']=[{'ParameterInfo':{'Name':name},'ParameterValue':value} for name,value in resolved.get('Scalars',{}).items()]
     return {'Type':'MaterialInstanceConstant','Name':path.stem,'Package':pkg,'Properties':props,
             'MaterialLabExportFormat':'compact','MaterialLabImportedPackages':imports,
-            'MaterialLabResolvedParameters':data.get('Parameters',{})}
+            'MaterialLabResolvedParameters':{key:resolved.get(key,{}) for key in ('Colors','Scalars','Switches')}}
 
 def vector_offset(data,name,guid_string):
     names,_=zen_names(data)

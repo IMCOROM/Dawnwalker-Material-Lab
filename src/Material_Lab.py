@@ -27,7 +27,7 @@ def output_stem(value):
 class Lab:
     def __init__(self,root,dnd=False):
         self.root=root;self.project=None;self.cells=[];self.dirty=False;self.loading=False
-        root.title('Dawnwalker Material Lab v0.19 — Clothing & Weapons');root.geometry('1360x850')
+        root.title('Dawnwalker Material Lab v0.21 — Clothing & Weapons');root.geometry('1360x850')
         root.protocol('WM_DELETE_WINDOW',self.close)
         self.appearance=Appearance(root,HOME/'appearance_settings.json')
         self.path=tk.StringVar();self.status=tk.StringVar(value='Choose an exported clothing folder to begin.')
@@ -75,6 +75,8 @@ class Lab:
         frame=ttk.Frame(self.book,padding=30);self.book.add(frame,text='Welcome')
         for text in ['One folder per item. Clothing and weapons are detected automatically.',
                      'PARAM • Grime • Scratch • Patterns / Weapon colors',
+                     'Import original .uasset files with FModel JSON and mesh exports. Keep their folder structure.',
+                     'Vanilla exports start with vanilla colors. Saved project copies retain your edits; importing another folder does not recover another mod automatically.',
                      'The importer follows material references and checks texture layouts before enabling edits.',
                      'Mesh layer counts use PSK/PSKX EXTRAUV0. Without a mesh, layer usage is marked unverified.',
                      'Shared assets live in AssetLibrary beside this application. Working copies live in Projects.',
@@ -111,6 +113,12 @@ class Lab:
         for tab in self.book.tabs():self.book.nametowidget(tab).destroy()
         for category in ('PARAM','Grime','Scratch','Weapon colors' if project.kind=='Weapon' else 'Patterns'):self.tab(category)
         self.loading=False
+        if not project.sections:
+            empty=ttk.Frame(self.book,padding=20);self.book.add(empty,text='Import help')
+            ttk.Label(empty,text='No editable material sections were found.',font=('Segoe UI',14,'bold')).pack(anchor='w')
+            ttk.Label(empty,text='Export material JSON, original .uasset files and PARAM texture metadata together. PNG-only exports cannot provide editable values.',wraplength=1000).pack(anchor='w',pady=10)
+            ttk.Label(empty,text='\n'.join(project.warnings[:12]) or 'Check the Import report for missing references and supported shader details.',wraplength=1000).pack(anchor='w')
+            self.book.select(empty)
         missing=sum(v=='missing' for v in project.dependencies.values())
         self.status.set(f'{project.kind} detected • {len(project.sections)} editable sections • {sum(len(s["layers"]) for s in project.sections)} layer rows • {missing} unresolved references. See Import report for details.')
         old=[]

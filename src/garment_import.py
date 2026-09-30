@@ -28,7 +28,7 @@ def objects(folder,index=None,library=None,errors=None):
     for p in sorted(Path(folder).rglob('*.json')):
         try: data=read_json(p)
         except (ValueError,UnicodeError,OSError): continue
-        if isinstance(data,dict) and 'Parameters' in data and 'Textures' in data:
+        if isinstance(data,dict) and 'Textures' in data and ('Parameters' in data or 'Colors' in data or 'Scalars' in data):
             try:
                 obj=compact_material(p,data,index or {},library or Path(folder))
                 if obj:data=[obj]

@@ -7,7 +7,7 @@
 3. Upload the **contents** of this source folder, so `README.md`, `build.ps1`,
    `MaterialLab.spec`, and `src/` appear at the repository root. Do not upload just
    the source ZIP: reviewers should be able to browse the individual source files.
-4. Commit the upload with a message such as `Publish v0.19 source and build instructions`.
+4. Commit the upload with a message such as `Publish v0.21 source and build instructions`.
 5. Copy the repository URL and the commit permalink (open the commit and copy its URL).
 6. Send the reply below after replacing both placeholders.
 
@@ -18,7 +18,7 @@ same folder if browser uploads are inconvenient.
 
 ## Suggested reply
 
-> Hi, I've published the full application source for Dawnwalker Material Lab v0.19 here:
+> Hi, I've published the full application source for Dawnwalker Material Lab v0.21 here:
 >
 > REPOSITORY_URL
 >
