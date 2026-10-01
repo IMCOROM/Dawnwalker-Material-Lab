@@ -1,6 +1,6 @@
-# v0.21 - 2026-09-30
+# v0.19 - 2026-09-30
 
-- Incorporates the v0.20 flattened FModel JSON import fix.
+- Incorporates the flattened FModel JSON import fix.
 - Accepts both string and ObjectPath texture references.
 - Reads validated optimized clothing pattern colors from compact exports.
 - Adds visible import failure guidance instead of unexplained empty tabs.

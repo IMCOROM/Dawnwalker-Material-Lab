@@ -33,7 +33,7 @@ manual commands below without changing the machine's execution policy.
 
 The script creates a local `.venv`, installs pinned dependencies from PyPI, runs
 source tests, builds the EXE, tests it with development runtime variables removed,
-and creates `release/Dawnwalker_Material_Lab_v0.21_AppOnly_Rebuilt.zip`.
+and creates `release/Dawnwalker_Material_Lab_v0.19_AppOnly_Rebuilt.zip`.
 It uses no administrator privileges. Use a writable checkout folder.
 
 Result: `dist/Dawnwalker Material Lab/Dawnwalker Material Lab.exe`.
@@ -43,7 +43,7 @@ full editing/build workflow.
 
 ## Assemble the full portable edition
 
-Extract the submitted `Dawnwalker_Material_Lab_v0.21_Full_Rebuilt.zip` to a
+Extract the submitted `Dawnwalker_Material_Lab_v0.19_Full_Rebuilt.zip` to a
 separate directory. Supply the folder that directly contains `AssetLibrary` and
 `Tools` (not the outer ZIP or its parent):
 
@@ -55,7 +55,7 @@ separate directory. Supply the folder that directly contains `AssetLibrary` and
 manifest **before** copying anything. It copies only `AssetLibrary`, `Tools`,
 `Licenses`, and `START HERE.txt`. It does not reuse the old EXE, `_internal`, user
 projects, appearance preferences, or recent paths. The runtime is rebuilt from
-source. Output is `release/Dawnwalker_Material_Lab_v0.21_Full_Rebuilt.zip`.
+source. Output is `release/Dawnwalker_Material_Lab_v0.19_Full_Rebuilt.zip`.
 
 The original resource pack is still needed to reproduce the *full* content: this
 repository does not contain the game asset binaries or Oodle's source. See

@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--resources', required=True,
-                        help='Extracted v0.21 NoNestedZIP folder containing AssetLibrary and Tools')
+                        help='Extracted v0.19 NoNestedZIP folder containing AssetLibrary and Tools')
     args = parser.parse_args()
     source = Path(args.resources).resolve()
     dest = ROOT / 'dist' / 'Dawnwalker Material Lab'

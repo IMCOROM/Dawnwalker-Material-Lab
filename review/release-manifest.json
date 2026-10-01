@@ -1,6 +1,6 @@
 {
-  "release": "Dawnwalker_Material_Lab_v0.21_Full_Rebuilt.zip",
-  "sha256": "55a1acdff8342dc6a2f2c544eda62ca9c3d5ac28405a94a3ff4a9f6879f7d498",
+  "release": "Dawnwalker_Material_Lab_v0.19_Full_Rebuilt.zip",
+  "sha256": "0fec7123e112e45ef95ba18fc7c3af45d390c122f26bf68d5ac6e8c8994a85dc",
   "files": [
     {
       "path": "_internal/_bz2.pyd",
@@ -5930,7 +5930,7 @@
     {
       "path": "_internal/Material_Lab.pyc",
       "size": 40304,
-      "sha256": "93ceeb191e533357533a9402e4dcf6c5e15f888e8cbdf4f69b8ac3e03cd0307a"
+      "sha256": "a722b3f7f541585c440eb66be78d4be1efae9f8a3e12c976b8142d3f748cb83c"
     },
     {
       "path": "_internal/ntpath.pyc",
@@ -14280,7 +14280,7 @@
     {
       "path": "START HERE.txt",
       "size": 472,
-      "sha256": "7fcc7254fe35650db6d9f41bb422bb97c943c0ab76f0ede7c5049d7f8d0ad8c4"
+      "sha256": "cc4ba846534246a840081eca664ca3b767f86d846db26b84d97feac3049b4cd2"
     },
     {
       "path": "Tools/companion.pak",

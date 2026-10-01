@@ -1,12 +1,18 @@
 # Dawnwalker Material Lab
 
-Source and Windows build instructions for **v0.21**, corresponding to
-`Dawnwalker_Material_Lab_v0.21_Full_Rebuilt.zip`.
+Source and Windows build instructions for **v0.19**, corresponding to
+`Dawnwalker_Material_Lab_v0.19_Full_Rebuilt.zip`.
 
 Material Lab edits supported exported clothing and weapon materials for The Blood
 of Dawnwalker. It discovers material sections, exposes PARAM, grime, scratch and
 pattern/weapon color controls, exports preview JSON, and builds mod files using
 RETOC. The interface includes drag-and-drop and persistent light/dark appearance.
+
+## Download the Windows application
+
+[Download the complete v0.19 portable ZIP](https://github.com/IMCOROM/Dawnwalker-Material-Lab/releases/download/v0.19/Dawnwalker_Material_Lab_v0.19_Full_Rebuilt.zip).
+
+Extract the ZIP and run `Dawnwalker Material Lab.exe`. Keep all included folders together. No Python installation is needed. The automatic GitHub **Source code** downloads contain source only; use the portable ZIP for the ready-to-run application.
 
 ## Windows quick start
 
@@ -32,7 +38,7 @@ Unsupported shaders, including the separate torso decal, remain read-only.
 - [Security review](docs/REVIEW.md): entry points, file access, subprocesses, limitations.
 - [Dependencies and provenance](docs/DEPENDENCIES.md): source links and binary-only components.
 - [Release manifest](review/release-manifest.json): SHA-256 of the submitted ZIP and every contained file.
-- [Application source hashes](review/source-sha256.json): source files used for v0.21.
+- [Application source hashes](review/source-sha256.json): source files used for v0.19.
 - [GitHub upload and moderator reply](docs/UPLOAD.md).
 
 ## Repository contents
@@ -55,7 +61,7 @@ SimpleParameter weapon colors. Unsupported or unvalidated layouts are reported
 rather than enabled for arbitrary editing. This repository does not include a
 Blender add-on; the app exports JSON for preview integration.
 
-This repository corresponds to the v0.21 release; it does not claim support for
+This repository corresponds to the v0.19 release; it does not claim support for
 every asset or future game version. Runtime tests are not a guarantee of in-game
 behavior, nor of acceptance by a hosting site's review process.
 

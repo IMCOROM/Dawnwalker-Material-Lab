@@ -1,4 +1,4 @@
-# Review guide for v0.21
+# Review guide for v0.19
 
 ## Code entry points
 
@@ -12,7 +12,7 @@
 | `appearance.py` | Light/dark styles and local appearance persistence |
 | `library_tools.py` | Optional extraction of missing assets from a user-selected local archive |
 
-All seven files are the source for the v0.21 desktop build. `review/source-sha256.json` records their hashes. The build helpers, docs
+All seven files are the source for the v0.19 desktop build. `review/source-sha256.json` records their hashes. The build helpers, docs
 and tests were added for review after that release; they were not in the original
 EXE. The included spec is the noarchive spec used for the final no-nested-ZIP build.
 
@@ -26,7 +26,7 @@ EXE. The included spec is the noarchive spec used for the final no-nested-ZIP bu
   `Projects` beside the EXE. Writes `recent_garments.json` and
   `appearance_settings.json` in that directory.
 - The user copies the built `.pak`, `.utoc`, `.ucas` files into the game's mods
-  directory; the v0.21 app does not automatically install them.
+  directory; the v0.19 app does not automatically install them.
 - Invokes local `Tools/retoc.exe` with explicit argument lists, without a shell:
   `pack-raw`, `verify`, and optional `get` for missing dependencies.
 - “Collect missing assets” prompts for a local `.utoc` and AES key. The key is

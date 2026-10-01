@@ -27,7 +27,7 @@ def output_stem(value):
 class Lab:
     def __init__(self,root,dnd=False):
         self.root=root;self.project=None;self.cells=[];self.dirty=False;self.loading=False
-        root.title('Dawnwalker Material Lab v0.21 — Clothing & Weapons');root.geometry('1360x850')
+        root.title('Dawnwalker Material Lab v0.19 — Clothing & Weapons');root.geometry('1360x850')
         root.protocol('WM_DELETE_WINDOW',self.close)
         self.appearance=Appearance(root,HOME/'appearance_settings.json')
         self.path=tk.StringVar();self.status=tk.StringVar(value='Choose an exported clothing folder to begin.')
