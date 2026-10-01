@@ -9,3 +9,7 @@ Standalone real-item imports passed: HMA_CoenUnique1a_Torso_A (66 controls)
 and M_Sword_Erka_01 (23 controls). The old HMA_Coen_Torso_B folder was no
 longer available for retesting. Archive CRC and no-nested-ZIP checks passed.
 No fresh in-game visual test was performed for v0.19.
+
+Export-free package: standalone startup passed again after removing bundled exports.
+ZIP integrity passed and no AssetLibrary/Exports entries remain. The earlier real-item
+import checks above preceded this resource removal and have not been repeated.

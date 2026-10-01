@@ -18,6 +18,7 @@ def main():
         raise ValueError('Build the executable first.')
     manifest = json.loads((ROOT / 'review/release-manifest.json').read_text())
     entries = [e for e in manifest['files'] if e['path'].startswith(('AssetLibrary/', 'Tools/', 'Licenses/')) or e['path'] == 'START HERE.txt']
+    entries = [e for e in entries if not e['path'].startswith('AssetLibrary/Exports/')]
     # Validate everything before copying. Never import user projects or runtime binaries.
     for entry in entries:
         f = source / entry['path']

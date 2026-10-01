@@ -1,5 +1,6 @@
 # v0.19 - 2026-09-30
 
+- Removes bundled exports and excludes them from future portable packages.
 - Incorporates the flattened FModel JSON import fix.
 - Accepts both string and ObjectPath texture references.
 - Reads validated optimized clothing pattern colors from compact exports.

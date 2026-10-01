@@ -27,7 +27,7 @@ attestation of that executable.
 | Resource | Role and provenance limits |
 | --- | --- |
 | `AssetLibrary/chunks/*` | Raw assets extracted from the game's archives; source data, not Python modules. |
-| `AssetLibrary/Exports/*` | Exported material metadata, shader/texture/mesh resources used for discovery and future previews. |
+| `AssetLibrary/Exports/*` | Optional local metadata cache; contents are excluded from the portable release. Import required metadata with your own item exports. |
 | `AssetLibrary/package_index.json` | Lookup from package paths to archive chunk IDs. |
 | `Tools/oo2core_9_win64.dll` | Existing proprietary Oodle decompression dependency supplied with the previous local tool setup. No source or verified original download record is available here. |
 | `Tools/companion.pak` | Existing 347-byte companion PAK template copied next to built mod containers. It is data, not an executable. No generator source was retained. |

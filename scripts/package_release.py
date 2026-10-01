@@ -12,6 +12,8 @@ for f in sorted(base.rglob('*')):
     if not f.is_file():
         continue
     rel = f.relative_to(base)
+    if rel.parts[:2] == ('AssetLibrary', 'Exports'):
+        continue
     if rel.parts[0] in ('Projects', '__pycache__') or rel.name in ('recent_garments.json', 'appearance_settings.json'):
         continue
     if f.suffix.lower() == '.zip':
